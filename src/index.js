@@ -1,13 +1,33 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+// import from file
+import { storeContext, storeContextInit } from "./context/storeContext";
+import storeRedux from "./redux/store";
+import GlobalStyles from "./components/GlobalStyles";
+import App from "./App";
+// import library
+import React from "react";
+import ReactDOM from "react-dom/client";
+import reportWebVitals from "./reportWebVitals";
+import { BrowserRouter } from "react-router-dom";
+import { Provider } from "react-redux";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
+  // Check
   <React.StrictMode>
-    <App />
+    {/* Store Context */}
+    <storeContext.Provider value={storeContextInit}>
+      {/* Router */}
+      <BrowserRouter>
+        {/* Store Redux */}
+        <Provider store={storeRedux}>
+          {/* Styles css global */}
+          <GlobalStyles>
+            {/* Main */}
+            <App />
+          </GlobalStyles>
+        </Provider>
+      </BrowserRouter>
+    </storeContext.Provider>
   </React.StrictMode>
 );
 

@@ -1,0 +1,90 @@
+.img {
+  width: 800px;
+  height: 500px;
+}
+
+.formsignin {
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 20;
+  animation: opacity 0.3s linear;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.formsignup {
+  height: 100vh;
+}
+
+.bgform {
+  height: 500px;
+  width: 800px;
+  border-radius: 8px;
+  box-shadow: 2px 2px 3px 0 rgb(0 0 0 / 0.2),
+    -2px -2px 3px 0 rgba(255, 255, 255, 0.2);
+  animation: enlarge 0.3s linear;
+  transform-origin: top right;
+}
+
+.bgform-2 {
+  height: 500px;
+  width: 400px;
+  background-color: white;
+  top: 0;
+  left: 50%;
+  box-shadow: 2px 2px 3px 0 rgb(0 0 0 / 0.2),
+    -2px -2px 3px 0 rgba(255, 255, 255, 0.2);
+  transition: all 0.3s linear;
+}
+
+.bgform-3 {
+  height: 500px;
+  width: 400px;
+  background-color: white;
+}
+
+@media (max-width: 768px) {
+  .bgform {
+    width: 400px;
+    overflow: hidden;
+  }
+  .img {
+    display: none;
+  }
+}
+
+.icon {
+  position: absolute;
+  z-index: 30;
+  right: 0;
+  top: 0;
+  font-size: 30px;
+  margin: 24px;
+  color: var(--main-color-1);
+  &:hover {
+    color: var(--main-color-3);
+    cursor: pointer;
+  }
+}
+
+@keyframes enlarge {
+  from {
+    transform: scale(0.1);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes opacity {
+  from {
+    background-color: rgba(0, 0, 0, 0);
+  }
+  to {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+}

@@ -1,0 +1,42 @@
+.wrapper {
+  position: relative;
+  .cl-outline-1,
+  .cl-outline-2 {
+    left: 0;
+    top: 0;
+    position: absolute;
+    width: 0px;
+    height: 0px;
+    background-color: var(--main-color-3);
+    transition: all 0.3s linear;
+  }
+  .cl-outline-3,
+  .cl-outline-4 {
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    width: 0px;
+    height: 0px;
+    background-color: var(--main-color-3);
+    transition: all 0.3s linear;
+  }
+
+  &:hover {
+    .cl-outline-1 {
+      width: 2px;
+      height: 100%;
+    }
+    .cl-outline-2 {
+      height: 2px;
+      width: 100%;
+    }
+    .cl-outline-3 {
+      width: 2px;
+      height: 100%;
+    }
+    .cl-outline-4 {
+      height: 2px;
+      width: 100%;
+    }
+  }
+}
