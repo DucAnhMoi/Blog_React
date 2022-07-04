@@ -1,46 +1,21 @@
-// Store initial
-const initialState = {
-  isSignIn: true,
-  isMountForgetPassword: true,
-  isMountSignForm: false,
-  listToast: [],
-};
-// Reducer
-const rootReducer = (state = initialState, action) => {
-  switch (action.type) {
-    // Sign Form
-    case "isSignIn":
-      return {
-        ...state,
-        isSignIn: (state.isSignIn = !state.isSignIn),
-      };
-    case "isMountForgetPassword":
-      return {
-        ...state,
-        isMountForgetPassword: (state.isMountForgetPassword =
-          !state.isMountForgetPassword),
-      };
-    case "isMountSignForm":
-      return {
-        ...state,
-        isMountSignForm: (state.isMountSignForm = !state.isMountSignForm),
-      };
-    // ToastMessage
-    case "deleteToast":
-      return {
-        ...state,
-        listToast: state.listToast.filter(
-          (toast) => toast.id !== action.payload
-        ),
-      };
-    case "addToast":
-      return {
-        ...state,
-        listToast: [...state.listToast, action.payload],
-      };
-    default:
-      return state;
-  }
-};
+// import { combineReducers } from "redux";
 
-export default rootReducer;
+// import mountSlice from "../components/componentsRedux/mountSlice";
+// import toastMessageSlice from "../components/componentsRedux/toastMessageSlice";
+// import blogSlice from "../components/componentsRedux/blogSlice";
+// // Reducer
+// // const rootReducer = (state = {}, action) => {
+// //   return {
+// //     mount: mountReducer(state.mount, action),
+// //     toastMessage: toastMessageReducer(state.toastMessage, action),
+// //     blog: blogReducer(state.blog, action),
+// //   };
+// // };
+
+// const rootReducer = combineReducers({
+//   mount: mountSlice.reducer,
+//   toastMessage: toastMessageSlice.reducer,
+//   blog: blogSlice.reducer,
+// });
+
+// export default rootReducer;

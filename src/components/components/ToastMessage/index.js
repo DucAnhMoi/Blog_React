@@ -66,7 +66,7 @@ const ToastMessage = ({ id, title, message, type, duration, handleDelete }) => {
           style={{ color: colorState }}
           className={cx("close")}
           icon={faCircleXmark}
-          onClick={() => handleDelete(id)}
+          onClick={(e) => handleDelete(e, id)}
         />
       </div>
     </div>

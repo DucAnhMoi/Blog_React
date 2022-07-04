@@ -11,10 +11,13 @@ module.exports = {
       fontFamily: {
         indieFlo: ['"Indie Flower"', "sans-serif"],
       },
-    },
-    colors: {
-      mainColor1: "rgb(62, 89, 209)",
-      mainColor3: "rgb(238, 46, 46)",
+      colors: {
+        mainColor1: "rgb(62, 89, 209)",
+        mainColor2: "rgb(155, 202, 27)",
+        mainColor3: "rgb(238, 46, 46)",
+        mainColor4: "rgb(55, 238, 95)",
+        textColor: "#666",
+      },
     },
   },
   plugins: [],

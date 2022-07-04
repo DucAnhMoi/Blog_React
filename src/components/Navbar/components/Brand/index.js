@@ -6,7 +6,7 @@ const cx = classNames.bind(styles);
 
 const Brand = ({ textColor }) => {
   return (
-    <div className={`font-indieFlo text-5xl pr-6 ${cx("brand")} ${textColor}`}>
+    <div className={`font-indieFlo text-5xl mr-6 ${cx("brand")} ${textColor}`}>
       DucAnhMoi
     </div>
   );

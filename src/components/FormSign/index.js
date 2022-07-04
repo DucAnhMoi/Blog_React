@@ -2,8 +2,8 @@
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
 import ForgetPassword from "./ForgetPassword";
-import { isSignInState } from "../../redux/selector";
-import { mountSignForm } from "../../redux/action";
+import { isSignInSelector } from "../../redux/selector";
+import mountSlice from "../componentsRedux/mountSlice";
 // import library
 import { useSelector, useDispatch } from "react-redux";
 import classNames from "classnames/bind";
@@ -16,9 +16,10 @@ const cx = classNames.bind(styles);
 function FormSign() {
   // Get state and dispatch action from redux store
   const dispatch = useDispatch();
-  const isSignIn = useSelector(isSignInState);
-  const handleMountSignForm = () => {
-    dispatch(mountSignForm());
+  const isSignIn = useSelector(isSignInSelector);
+  const handleMountSignForm = (e) => {
+    dispatch(mountSlice.actions.isMountSignForm());
+    e.stopPropagation();
   };
   var cssLeft;
   // from innerWidth set Css
@@ -35,6 +36,7 @@ function FormSign() {
   return (
     <div className={`${cx("formsignin")} flex items-center justify-center`}>
       <div
+        onClick={(e) => e.stopPropagation()}
         className={`${cx("bgform")} flex items-center relative overflow-hidden`}
       >
         <img
@@ -45,7 +47,7 @@ function FormSign() {
         <FontAwesomeIcon
           className={cx("icon")}
           icon={faCircleXmark}
-          onClick={handleMountSignForm}
+          onClick={(e) => handleMountSignForm(e)}
         />
         <div className={`${cx("bgform-2")} absolute `} style={cssLeft}>
           <div className={`${cx("bgform-3")} relative overflow-hidden`}>

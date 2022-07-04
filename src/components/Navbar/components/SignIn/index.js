@@ -4,20 +4,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { nanoid } from "nanoid";
 // import from file
 import Button from "../../../components/Button";
-import {
-  mountSignForm,
-  changeSignIn,
-  addToast,
-} from "../../../../redux/action";
-import { isSignInState } from "../../../../redux/selector";
+import mountSlice from "../../../componentsRedux/mountSlice";
+import toastMessageSlice from "../../../componentsRedux/toastMessageSlice";
+import { isSignInSelector } from "../../../../redux/selector";
 
 const SignIn = () => {
   // Get state and dispatch action from redux store
-  const isSignIn = useSelector(isSignInState);
+  const isSignIn = useSelector(isSignInSelector);
   const dispatch = useDispatch();
   const messageScreen = () => {
     dispatch(
-      addToast({
+      toastMessageSlice.actions.addToast({
         id: nanoid(),
         title: "Bạn đang ở",
         message: "Giao diện đăng nhập tài khoản",
@@ -26,22 +23,24 @@ const SignIn = () => {
       })
     );
   };
-  const handleMountSignForm = () => {
+  const handleMountSignForm = (e) => {
     if (isSignIn) {
-      dispatch(mountSignForm());
+      dispatch(mountSlice.actions.isMountSignForm());
       messageScreen();
+      e.stopPropagation();
     } else {
-      dispatch(changeSignIn());
-      dispatch(mountSignForm());
+      dispatch(mountSlice.actions.isSignIn());
+      dispatch(mountSlice.actions.isMountSignForm());
       messageScreen();
+      e.stopPropagation();
     }
   };
   // UI
   return (
     <div
-      style={{ fontSize: "1.5rem" }}
-      className="py-2 px-5 rounded-lg"
-      onClick={handleMountSignForm}
+      style={{ fontSize: "1.2rem" }}
+      className="py-2 px-2 rounded-lg"
+      onClick={(e) => handleMountSignForm(e)}
     >
       <Button>Sign in</Button>
     </div>

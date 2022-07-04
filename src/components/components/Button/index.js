@@ -8,7 +8,7 @@ function Button({ children }) {
   // UI
   return (
     <div
-      className={`w-28 p-2 flex justify-center cursor-pointer ${cx(
+      className={`p-2 flex justify-center cursor-pointer ${cx(
         "wrapper"
       )} overflow-hidden`}
     >

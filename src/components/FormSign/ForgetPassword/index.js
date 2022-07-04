@@ -1,9 +1,10 @@
 // import from file
 import Brand from "../../Navbar/components/Brand";
 import ButtonWr from "../../components/Button";
-import { mountForgetPassword, addToast } from "../../../redux/action";
+import mountSlice from "../../componentsRedux/mountSlice";
+import toastMessageSlice from "../../componentsRedux/toastMessageSlice";
 import styles from "./ForgetPassword.module.scss";
-import { mountForgetPasswordState } from "../../../redux/selector";
+import { mountForgetPasswordSelector } from "../../../redux/selector";
 // import library
 import TextField from "@mui/material/TextField";
 import { nanoid } from "nanoid";
@@ -46,13 +47,13 @@ const ForgetPassword = () => {
   // Get state and dispatch action from redux store
   const dispatch = useDispatch();
   const changeMountForget = () => {
-    dispatch(mountForgetPassword());
+    dispatch(mountSlice.actions.isMountForgetPassword());
     messageScreen();
   };
-  const isMountForgetPassword = useSelector(mountForgetPasswordState);
+  const isMountForgetPassword = useSelector(mountForgetPasswordSelector);
   const messageScreen = () => {
     dispatch(
-      addToast({
+      toastMessageSlice.actions.addToast({
         id: nanoid(),
         title: "Bạn đang ở",
         message: "Giao diện đăng nhập tài khoản",

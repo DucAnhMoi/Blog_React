@@ -3,20 +3,17 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { nanoid } from "nanoid";
 // import from file
-import {
-  mountSignForm,
-  changeSignIn,
-  addToast,
-} from "../../../../redux/action";
-import { isSignInState } from "../../../../redux/selector";
+import mountSlice from "../../../componentsRedux/mountSlice";
+import toastMessageSlice from "../../../componentsRedux/toastMessageSlice";
+import { isSignInSelector } from "../../../../redux/selector";
 
 const SignUp = () => {
   // Get state and dispatch action from redux store
-  const isSignIn = useSelector(isSignInState);
+  const isSignIn = useSelector(isSignInSelector);
   const dispatch = useDispatch();
   const messageScreen = () => {
     dispatch(
-      addToast({
+      toastMessageSlice.actions.addToast({
         id: nanoid(),
         title: "Bạn đang ở",
         message: "Giao diện đăng ký tài khoản",
@@ -25,14 +22,16 @@ const SignUp = () => {
       })
     );
   };
-  const handleMountSignForm = () => {
+  const handleMountSignForm = (e) => {
     if (isSignIn) {
-      dispatch(mountSignForm());
-      dispatch(changeSignIn());
+      dispatch(mountSlice.actions.isMountSignForm());
+      dispatch(mountSlice.actions.isSignIn());
       messageScreen();
+      e.stopPropagation();
     } else {
-      dispatch(mountSignForm());
+      dispatch(mountSlice.actions.isMountSignForm());
       messageScreen();
+      e.stopPropagation();
     }
   };
   // UI
@@ -41,10 +40,10 @@ const SignUp = () => {
       style={{
         backgroundColor: "var(--main-color-1)",
         color: "rgba(255,255,255)",
-        fontSize: "1.5rem",
+        fontSize: "1.2rem",
       }}
-      className="py-2 px-5 rounded-lg cursor-pointer hover:opacity-50"
-      onClick={handleMountSignForm}
+      className="py-2 px-2 rounded-lg cursor-pointer hover:opacity-50"
+      onClick={(e) => handleMountSignForm(e)}
     >
       Sign up
     </div>

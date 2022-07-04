@@ -1,7 +1,8 @@
 // import from file
 import ButtonWr from "../../components/Button";
 import Brand from "../../Navbar/components/Brand";
-import { changeSignIn, addToast } from "../../../redux/action";
+import mountSlice from "../../componentsRedux/mountSlice";
+import toastMessageSlice from "../../componentsRedux/toastMessageSlice";
 import styles from "./SignUp.module.scss";
 // import library
 import { nanoid } from "nanoid";
@@ -44,7 +45,7 @@ function SignUp({ isSignIn }) {
   const onSubmit = (data) => {
     console.log(data);
     dispatch(
-      addToast({
+      toastMessageSlice.actions.addToast({
         id: nanoid(),
         title: "Thành công",
         message: "Bạn đã đăng ký thành công",
@@ -57,12 +58,12 @@ function SignUp({ isSignIn }) {
   // Get state and dispatch action from redux store
   const dispatch = useDispatch();
   const changeSign = () => {
-    dispatch(changeSignIn());
+    dispatch(mountSlice.actions.isSignIn());
     messageScreen();
   };
   const messageScreen = () => {
     dispatch(
-      addToast({
+      toastMessageSlice.actions.addToast({
         id: nanoid(),
         title: "Bạn đang ở",
         message: "Giao diện đăng nhập tài khoản",

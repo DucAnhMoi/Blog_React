@@ -1,9 +1,17 @@
 // Selector
+// mount
 // Handle Change among Sign Form
-export const isSignInState = (state) => state.isSignIn;
+export const isSignInSelector = (state) => state.mount.isSignIn;
 // Mount Screen ForgetPassword
-export const mountForgetPasswordState = (state) => state.isMountForgetPassword;
+export const mountForgetPasswordSelector = (state) =>
+  state.mount.isMountForgetPassword;
 // Mount Screen SignForm
-export const mountSignFormState = (state) => state.isMountSignForm;
+export const mountSignFormSelector = (state) => state.mount.isMountSignForm;
+
+// toastMessage
 // Get data toastMessage
-export const toastMessageState = (state) => state.listToast;
+export const toastMessageSelector = (state) => state.toastMessage;
+
+// blog
+// Get data blogList
+export const listBlogSelector = (state) => state.blog;
