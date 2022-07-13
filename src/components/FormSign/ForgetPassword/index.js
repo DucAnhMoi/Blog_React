@@ -1,8 +1,8 @@
 // import from file
-import Brand from "../../Navbar/components/Brand";
+import Brand from "../../components/Brand";
 import ButtonWr from "../../components/Button";
-import mountSlice from "../../componentsRedux/mountSlice";
-import toastMessageSlice from "../../componentsRedux/toastMessageSlice";
+import mountSlice from "../../sliceRedux/mountSlice";
+import toastMessageSlice from "../../sliceRedux/toastMessageSlice";
 import styles from "./ForgetPassword.module.scss";
 import { mountForgetPasswordSelector } from "../../../redux/selector";
 // import library
@@ -10,40 +10,12 @@ import TextField from "@mui/material/TextField";
 import { nanoid } from "nanoid";
 import { useDispatch, useSelector } from "react-redux";
 import classNames from "classnames/bind";
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
-import { setLocale } from "yup";
 
-setLocale({
-  string: {
-    email: "Email is incorrect !!!",
-  },
-});
 const cx = classNames.bind(styles);
 
 const ForgetPassword = () => {
   // Handle Submit
-  const schema = yup.object().shape({
-    Email: yup.string().email().required("Please enter your email !!!"),
-    Password: yup
-      .string()
-      .min(8)
-      .max(16)
-      .required("Please enter your password !!!"),
-  });
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    reset,
-  } = useForm({
-    resolver: yupResolver(schema),
-  });
-  const onSubmit = (data) => {
-    console.log(data);
-    reset();
-  };
+  const handleSubmit = () => {};
   // Get state and dispatch action from redux store
   const dispatch = useDispatch();
   const changeMountForget = () => {
@@ -81,19 +53,17 @@ const ForgetPassword = () => {
       {/* Text Field Email */}
       <div className={`flex flex-col my-4`}>
         <TextField
-          {...register("Email")}
-          id="outlined-basic"
+          id="outlined-basic7"
           label="Email Address"
           variant="outlined"
           type="email"
         />
       </div>
-      <p>{errors.Email?.message}</p>
       {/* Button Submit */}
       <div className="my-3">
         <ButtonWr>
           <div
-            onClick={handleSubmit(onSubmit)}
+            onClick={handleSubmit}
             className="text-mainColor1 py-2 font-bold cursor-pointer"
           >
             Continue

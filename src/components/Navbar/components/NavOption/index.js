@@ -1,35 +1,36 @@
 // import from file
-import Button from "../../../components/Button";
 import styles from "./NavOption.module.scss";
+import "./NavOption.css";
+import ButtonLine from "../../../components/ButtonLine";
 // import library
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import classNames from "classnames/bind";
 const cx = classNames.bind(styles);
 
 const NavOption = ({ flexType, items }) => {
   return (
     <div className={`flex ${flexType} ${items}`}>
-      <Button>
-        <Link className={`${cx("link")}`} to="/">
+      <ButtonLine activeclassname="active">
+        <NavLink className={`${cx("link")} py-1`} to="/">
           Home
-        </Link>
-      </Button>
-      <Button>
-        <Link className={`${cx("link")}`} to="/About">
+        </NavLink>
+      </ButtonLine>
+      <ButtonLine activeclassname="active">
+        <NavLink className={`${cx("link")} py-1`} to="/About">
           About
-        </Link>
-      </Button>
-      <Button>
-        <Link className={`${cx("link")}`} to="/Blog">
+        </NavLink>
+      </ButtonLine>
+      <ButtonLine activeclassname="active">
+        <NavLink className={`${cx("link")} py-1`} to="/Blog">
           Blog
-        </Link>
-      </Button>
-      <Button>
-        <Link className={`${cx("link")}`} to="/Todos">
+        </NavLink>
+      </ButtonLine>
+      <ButtonLine activeclassname="active">
+        <NavLink className={`${cx("link")} py-1`} to="/Todos">
           Todos
-        </Link>
-      </Button>
+        </NavLink>
+      </ButtonLine>
     </div>
   );
 };

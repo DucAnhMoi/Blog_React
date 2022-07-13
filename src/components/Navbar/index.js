@@ -1,7 +1,7 @@
 // import from file
-import Brand from "./components/Brand";
-import SignIn from "./components/SignIn";
-import SignUp from "./components/SignUp";
+import Brand from "../components/Brand";
+import SignInBtn from "./components/SignInBtn";
+import SignUpBtn from "./components/SignUpBtn";
 import Button from "../components/Button";
 import NavOption from "./components/NavOption";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -60,8 +60,8 @@ const Navbar = () => {
       </div>
       {/* Sign In, Sign Out */}
       <div className="flex items-center">
-        <SignIn />
-        <SignUp />
+        <SignInBtn />
+        <SignUpBtn />
       </div>
     </div>
   );

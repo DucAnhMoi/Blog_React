@@ -8,7 +8,7 @@ import {
   faInstagram,
 } from "@fortawesome/free-brands-svg-icons";
 // import from file
-import Brand from "../../components/Navbar/components/Brand";
+import Brand from "../components/Brand";
 
 const Footer = () => {
   return (

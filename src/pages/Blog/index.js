@@ -2,8 +2,6 @@
 import * as React from "react";
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import MenuItem from "@mui/material/MenuItem";
-import Select from "@mui/material/Select";
 import TextField from "@mui/material/TextField";
 import className from "classnames/bind";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -12,42 +10,52 @@ import { Link } from "react-router-dom";
 // import from file
 import styles from "./Blog.module.scss";
 import { listBlogSelector } from "../../redux/selector";
-import ContentBlog from "../../components/home/Content/ContentBlog";
+import BlogContent from "../Blog/components/BlogContent";
 
 const cx = className.bind(styles);
 
 const Blog = () => {
   const listBlog = useSelector(listBlogSelector);
-  const [type, setType] = useState("All");
+  const [textSearch, setTextSearch] = useState({
+    type: "All",
+    text: "",
+  });
 
-  const handleChange = (event) => {
-    setType(event.target.value);
+  const handleChangeTextField = (event) => {
+    setTextSearch((prev) => ({ ...prev, text: event.target.value }));
+  };
+
+  const handleChangeOption = (event) => {
+    setTextSearch((prev) => ({ ...prev, type: event.target.value }));
+  };
+
+  const handleSubmit = () => {
+    console.log(textSearch);
   };
 
   return (
     <div className="mt-24 px-4">
       <div className="flex items-center">
         <div className="mr-2">
-          <Select
-            labelId="demo-simple-select-label"
-            id="demo-simple-select"
-            value={type}
-            label="Age"
-            onChange={handleChange}
-            className="bg-white cursor-pointer"
+          <select
+            value={textSearch.type}
+            onChange={(e) => handleChangeOption(e)}
+            className="bg-white cursor-pointer p-4 text-lg"
           >
-            <MenuItem value={"New"}>New</MenuItem>
-            <MenuItem value={"All"}>All</MenuItem>
-            <MenuItem value={"Hot"}>Hot</MenuItem>
-          </Select>
+            <option value="New">All</option>
+            <option value="All">New</option>
+            <option value="Hot">Hot</option>
+          </select>
         </div>
         <div>
           <TextField
+            value={textSearch.text}
             id="outlined-search"
             label="Search ..."
             type="search"
             variant="outlined"
             className={cx("search-input")}
+            onChange={(e) => handleChangeTextField(e)}
           />
         </div>
         <div
@@ -57,6 +65,7 @@ const Blog = () => {
             fontSize: "1.2rem",
           }}
           className="py-2 px-8 ml-2 h-14 flex items-center rounded-lg cursor-pointer hover:opacity-50"
+          onClick={handleSubmit}
         >
           <FontAwesomeIcon className="text-xl" icon={faMagnifyingGlass} />
         </div>
@@ -65,12 +74,11 @@ const Blog = () => {
         <div className={`w-full my-8 ${cx("content-sub")}`}>
           {listBlog.map((blog) => (
             <Link key={blog.id} to={`/Blog/blog${blog.id}`}>
-              <ContentBlog
+              <BlogContent
                 author={blog.author}
                 time={blog.time}
                 title={blog.title}
                 paragraph={blog.paragraph}
-                isBlogMain={false}
               />
             </Link>
           ))}

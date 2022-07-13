@@ -1,46 +1,27 @@
 // import library
 import { Routes, Route } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Blog from "./pages/Blog";
+import Todos from "./pages/Todos";
 // import from file
-import FormSign from "./components/FormSign";
-import Navbar from "./components/Navbar";
-import { publicRoutes } from "./router";
-import Blog1 from "./pages/Blog/Blog1";
-import Blog2 from "./pages/Blog/Blog2";
-import { mountSignFormSelector } from "./redux/selector";
-import { mountSignForm } from "./redux/action";
-import Footer from "./components/Footer";
-import ListToast from "./components/components/ListToast";
+import Layout from "./components/Layout";
+import { statusSelector } from "./redux/selector";
+import { useSelector } from "react-redux";
 
 function App() {
-  // Get state and dispatch action from redux store
-  const dispatch = useDispatch();
-  const isMountForm = useSelector(mountSignFormSelector);
-  window.onclick = () => {
-    if (isMountForm) {
-      dispatch(mountSignForm());
-    }
-  };
+  const status = useSelector(statusSelector);
   // UI
   return (
-    <div className="bg-slate-100 overflow-hidden">
-      {isMountForm && <FormSign />}
-      <div className="App flex items-center flex-col">
-        <Navbar />
-        <div className="wrapper w-app px-2">
-          <Routes>
-            {publicRoutes.map((route, index) => {
-              let Page = route.component;
-              return <Route key={index} path={route.path} element={<Page />} />;
-            })}
-            <Route path={"/Blog/blog1"} element={<Blog1 />} />
-            <Route path={"/Blog/blog2"} element={<Blog2 />} />
-          </Routes>
-        </div>
-        <Footer />
-      </div>
-      <ListToast />
-    </div>
+    <Layout>
+      <Routes>
+        <Route key={1} path="/*" element={<Home />} />
+        <Route key={2} path="/About" element={<About />} />
+        <Route key={3} path="/Blog" element={<Blog />} />
+        <Route key={4} path="/Todos" element={<Todos />} />
+      </Routes>
+      {status === "loading" ? <div>Loading.....</div> : <div></div>}
+    </Layout>
   );
 }
 

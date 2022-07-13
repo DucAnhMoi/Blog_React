@@ -3,7 +3,7 @@ import SignIn from "./SignIn";
 import SignUp from "./SignUp";
 import ForgetPassword from "./ForgetPassword";
 import { isSignInSelector } from "../../redux/selector";
-import mountSlice from "../componentsRedux/mountSlice";
+import mountSlice from "../sliceRedux/mountSlice";
 // import library
 import { useSelector, useDispatch } from "react-redux";
 import classNames from "classnames/bind";

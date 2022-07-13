@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import ToastMessage from "../ToastMessage";
 import styles from "./ListToast.module.scss";
 import { toastMessageSelector } from "../../../redux/selector";
-import toastMessageSlice from "../../componentsRedux/toastMessageSlice";
+import toastMessageSlice from "../../sliceRedux/toastMessageSlice";
 
 const cx = className.bind(styles);
 

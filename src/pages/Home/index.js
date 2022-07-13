@@ -1,8 +1,9 @@
 // import from file
-import Title from "../../components/home/Title";
-import Search from "../../components/home/Search";
-import Contact from "../../components/home/Contact";
-import Content from "../../components/home/Content";
+import Title from "./components/Title";
+import Search from "./components/Search";
+import Contact from "./components/Contact";
+import Content from "./components/Content";
+import HomeNav from "./components/HomeNav";
 // import library
 import React from "react";
 import className from "classnames/bind";
@@ -16,6 +17,7 @@ const Home = () => {
       <Title />
       <Search />
       <Contact />
+      <HomeNav />
       <Content />
     </div>
   );
